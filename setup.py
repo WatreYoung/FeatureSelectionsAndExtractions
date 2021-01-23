@@ -1,8 +1,8 @@
-# -*-coding: utf-8-*-
+-*-coding: utf-8-*-
 
-# Author     : Littlely 
-# FileName   : setup.py
-# Description:
+Author     : Littlely
+FileName   : setup.py
+Description:
 from setuptools import setup, find_packages
 
 setup(
@@ -13,6 +13,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         "numpy==1.18.0",
-        "scikit-learn==0.20.2"
+        # "scikit-learn==0.20.2"
     ]
 )

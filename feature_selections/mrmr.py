@@ -94,20 +94,22 @@ class MRMR(Base):
         """
         calculate feature-label mutual information
 
-        :param arr:
+        :param arr: features of the task
 
-        :param y:
+        :param y: labels of the task
 
         :return:
         """
+        # m is the number of samples
+        # n is the number of features
         m, n = arr.shape
         MIs = []
         p_y = np.histogram(y)[0]
         h_y = self.entropy(p_y)
 
         for i in range(n):
-            p_i = np.histogram(arr[:, i])[0]
-            p_iy = np.histogram2d(arr[:, 0], y)[0]
+            p_i = np.histogram([float(x) for x in arr[:, i]])[0]
+            p_iy = np.histogram2d([float(x) for x in arr[:, 0]], y[:])[0]
 
             h_i = self.entropy(p_i)
             h_iy = self.entropy(p_iy)
@@ -126,6 +128,8 @@ class MRMR(Base):
 
         :return:
         """
+        x = [float(a) for a in x]
+        y = [float(a) for a in y]
         p_x = np.histogram(x)[0]
         p_y = np.histogram(y)[0]
         p_xy = np.histogram2d(x, y)[0]
